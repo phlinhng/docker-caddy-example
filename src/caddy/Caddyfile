@@ -1,2 +1,2 @@
 localhost:8080
-proxy / reacthost:3000
+proxy / react:3000
