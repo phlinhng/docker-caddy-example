@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  caddy:
+    container_name: caddyhost
+    build:
+      context: ./src/caddy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./caddy:/root/.caddy
+      - ./src/caddy/Caddyfile:/etc/Caddyfile
+    entrypoint: "caddy --conf /etc/Caddyfile"
+    networks:
+      - test
+    restart: unless-stopped
+  react:
+    container_name: reacthost
+    build:
+      context: ./src/react
+    networks:
+      - test
+    restart: unless-stopped
+
+networks:
+  test:
