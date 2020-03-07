@@ -2,7 +2,6 @@ version: "3"
 
 services:
   caddy:
-    container_name: caddyhost
     build:
       context: ./src/caddy
     ports:
@@ -15,7 +14,6 @@ services:
       - test
     restart: unless-stopped
   react:
-    container_name: reacthost
     build:
       context: ./src/react
     networks:
